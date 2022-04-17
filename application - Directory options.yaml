@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: directory-app
+  namespace: argocd
+spec: 
+  destination:
+    namespace: directory-app
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: guestbook-with-sub-directories
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+    directory:
+      recurse: true
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    
