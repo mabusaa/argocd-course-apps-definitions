@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: private-repo-ssh
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: git@github.com:mabusaa/argocd-example-apps-private.git
+  sshPrivateKey: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+    QyNTUxOQAAACA/AV2r6tUc3CL2juH2bdxAugL+qBf9ga+unn13WMx9ZwAAAJgv7qbZL+6m
+    2QAAAAtzc2gtZWQyNTUxOQAAACA/AV2r6tUc3CL2juH2bdxAugL+qBf9ga+unn13WMx9Zw
+    AAAEBqHeXgOT5Xcf4NSqrKJgtJe/C5a2uginydFTXS7Rqpcz8BXavq1RzcIvaO4fZt3EC6
+    Av6oF/2Br66efXdYzH1nAAAAFWFidXNhYV9tekBob3RtYWlsLmNvbQ==
+    -----END OPENSSH PRIVATE KEY-----
