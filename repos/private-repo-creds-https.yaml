@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: private-repo-creds-https
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+stringData:
+  type: git
+  url: https://github.com/mabusaa
+  password: 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
+  username: my-token
