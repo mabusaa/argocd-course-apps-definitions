@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: auto-pruning-demo
+  namespace: argocd
+spec: 
+  destination:
+    namespace: auto-pruning-demo
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: guestbook-with-sub-directories
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+    directory:
+      recurse: true
+  syncPolicy:
+    automated: 
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+
+    

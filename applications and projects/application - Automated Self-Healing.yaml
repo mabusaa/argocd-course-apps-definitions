@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: auto-selfheal-demo
+  namespace: argocd
+spec: 
+  destination:
+    namespace: auto-selfheal-demo
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: guestbook-with-sub-directories
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+    directory:
+      recurse: true
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+    
