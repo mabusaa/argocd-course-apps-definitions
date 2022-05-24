@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: no-prune-resources
+  namespace: argocd
+spec:
+  destination:
+    namespace: no-prune-resources
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: sync-options/no-prune
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+    directory:
+      recurse: true
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+
+    

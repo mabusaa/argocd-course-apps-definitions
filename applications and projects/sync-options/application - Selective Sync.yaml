@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: selective-sync
+  namespace: argocd
+spec:
+  destination:
+    namespace: selective-sync
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: sync-options/selective-sync
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+    directory:
+      recurse: true
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+
+    
