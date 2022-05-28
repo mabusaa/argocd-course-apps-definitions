@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: track-helm-range
+  namespace: argocd
+spec:
+  destination:
+    namespace: track-helm-range
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    chart: sealed-secrets
+    repoURL: "https://bitnami-labs.github.io/sealed-secrets"
+    targetRevision: 1.* # you can use greater than and smaller than ex: >=3.0.0 <4.1.0
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+
+    

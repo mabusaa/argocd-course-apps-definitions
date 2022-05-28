@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: track-helm-latest-version
+  namespace: argocd
+spec:
+  destination:
+    namespace: track-helm-latest-version
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    chart: ingress-nginx
+    repoURL: "https://kubernetes.github.io/ingress-nginx"
+    targetRevision: '*'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+
+    
