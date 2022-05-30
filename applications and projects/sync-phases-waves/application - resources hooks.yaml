@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: sync-phases
+  namespace: argocd
+spec:
+  destination:
+    namespace: sync-phases
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: sync-phases
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    
