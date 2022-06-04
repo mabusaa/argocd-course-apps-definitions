@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: sync-waves
+  namespace: argocd
+spec:
+  destination:
+    namespace: sync-waves
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: sync-waves
+    repoURL: "https://github.com/mabusaa/argocd-example-apps.git"
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    
