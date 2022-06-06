@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: local-dev
+        url: https://kubernetes.default.svc
+      - cluster: staging-digitalocean
+        url: https://c50189b1-bb18-4a46-b772-b045e0ed4fde.k8s.ondigitalocean.com
+  template:
+    metadata:
+      name: '{{cluster}}-guestbook'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/mabusaa/argocd-example-apps.git
+        targetRevision: master
+        path: guestbook
+      destination:
+        server: '{{url}}'
+        namespace: guestbook
+      syncPolicy:
+         syncOptions:
+          - CreateNamespace=true
