@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: security-apps
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/mabusaa/argocd-example-apps.git
+      revision: master
+      directories:
+      - path: helmcharts/security-policy-charts/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/mabusaa/argocd-example-apps.git
+        targetRevision: master
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+         syncOptions:
+          - CreateNamespace=true
