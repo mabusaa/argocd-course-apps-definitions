@@ -8,5 +8,5 @@ metadata:
 stringData:
   type: git
   url: https://github.com/mabusaa
-  password: # password goes here, NOTE: dont push secrets into git, use seealed secrets as a solution for secrets in gitops.
+  password: # password goes here, NOTE: dont push secrets into git, use sealed secrets as a solution for secrets in gitops.
   username: my-token
