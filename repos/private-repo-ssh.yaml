@@ -10,5 +10,5 @@ stringData:
   url: git@github.com:mabusaa/argocd-example-apps-private.git
   sshPrivateKey: |
     -----BEGIN OPENSSH PRIVATE KEY-----
-     # key goes here
+     # key goes here  NOTE: dont push secrets into git, use sealed secrets as a solution for secrets in gitops.
     -----END OPENSSH PRIVATE KEY-----
