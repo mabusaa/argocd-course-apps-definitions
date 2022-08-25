@@ -13,7 +13,7 @@ stringData:
   server: https://c50189b1-bb18-4a46-b772-b045e0ed4fde.k8s.ondigitalocean.com
   config: |
     {
-      "bearerToken": "###", # dont push secrets into git NOTE:  use seealed secrets as a solution for secrets in gitops.
+      "bearerToken": "###", # dont push secrets into git NOTE:  use sealed secrets as a solution for secrets in gitops.
       "tlsClientConfig": {
         "insecure": false,
         "caData": "###"
