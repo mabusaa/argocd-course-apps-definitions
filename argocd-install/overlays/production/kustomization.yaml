@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
  - ../../highly-available
 
-patchesStrategicMerge:
-- ./config/argocd-cmd-params-cm.yaml
+patches:
+- path: ./config/argocd-cmd-params-cm.yaml
