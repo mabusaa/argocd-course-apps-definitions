@@ -6,3 +6,4 @@ resources:
 
 patches:
 - path: ./config/argocd-cmd-params-cm.yaml
+- path: ./service/argocd-server-service.yaml
