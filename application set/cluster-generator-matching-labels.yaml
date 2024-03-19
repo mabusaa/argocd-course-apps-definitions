@@ -8,7 +8,7 @@ spec:
   - clusters:
      selector:
        matchLabels:
-        non-prod: "true"
+        prod: "false"
 
   template:
     metadata:
@@ -17,7 +17,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/mabusaa/argocd-example-apps.git
+        repoURL: https://github.com/jonathan-paule/argocd-example-apps.git
         targetRevision: master
         path: guestbook
       destination:
