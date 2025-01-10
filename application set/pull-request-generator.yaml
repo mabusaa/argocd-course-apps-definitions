@@ -8,7 +8,7 @@ spec:
   - pullRequest:
       github:
         # The GitHub organization or user.
-        owner: mabusaa
+        owner: sakshirathoree
         # The Github repository
         repo: argocd-course-webapp
         # Labels is used to filter the PRs that you want to target. (optional)
@@ -21,12 +21,12 @@ spec:
       namespace: argocd
     spec:
       source:
-        repoURL: 'https://github.com/mabusaa/argocd-course-webapp.git'
+        repoURL: 'https://github.com/sakshirathoree/argocd-course-webapp.git'
         targetRevision: '{{head_sha}}'
         path: helm/webapp
       project: "default"
       destination:
-        server: https://kubernetes.default.svc
+        server: https://AB4CABC42894FD7A6E3EF4E8C721DF85.gr7.us-east-1.eks.amazonaws.com
         namespace: webapp-{{branch}}-{{number}}
       syncPolicy:
          syncOptions:
